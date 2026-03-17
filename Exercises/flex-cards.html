@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Task 5 - Flexbox Card Layout</title>
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/flex-cards.css" />
+</head>
+<body>
+
+  <header class="fixed-header">
+    <div class="brand">
+      <div class="logo">L3</div>
+      <div class="brand-text">
+        <h1>Flexbox Card Layout</h1>
+        <div class="sub">Task 5 — Equal height cards</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page wrapper">
+    <section class="cards-area" aria-label="Project cards">
+      <!-- Project Alpha -->
+      <article class="card" tabindex="0">
+        <div class="card-media">
+          <img src="../Images/Project%20Alpha.png" alt="Project Alpha cover" />
+        </div>
+
+        <div class="card-body">
+          <h3 class="card-title">Project Alpha</h3>
+          <p class="card-excerpt">A short description that may be one or two lines long. Cards remain equal height regardless of content length.</p>
+
+          <ul class="card-meta">
+            <li><strong>Role:</strong> Front-end</li>
+            <li><strong>Tech:</strong> HTML, CSS, JS</li>
+          </ul>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn primary">View</button>
+          <button class="btn ghost">Details</button>
+        </div>
+      </article>
+
+      <!-- Project Beta -->
+      <article class="card" tabindex="0">
+        <div class="card-media">
+          <img src="../Images/Project%20Beta.png" alt="Project Beta cover" />
+        </div>
+
+        <div class="card-body">
+          <h3 class="card-title">Project Beta</h3>
+          <p class="card-excerpt">Longer description to demonstrate equal height behavior. This card contains more text than others to prove the layout keeps all cards the same height.</p>
+          <ul class="card-meta"><li><strong>Role:</strong> UI</li><li><strong>Tech:</strong> CSS Grid</li></ul>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn primary">View</button>
+          <button class="btn ghost">Details</button>
+        </div>
+      </article>
+
+      <!-- Project Gamma -->
+      <article class="card" tabindex="0">
+        <div class="card-media">
+          <img src="../Images/Project%20Gamma.png" alt="Project Gamma cover" />
+        </div>
+
+        <div class="card-body">
+          <h3 class="card-title">Project Gamma</h3>
+          <p class="card-excerpt">Short description.</p>
+          <ul class="card-meta"><li><strong>Role:</strong> Research</li><li><strong>Tech:</strong> Prototyping</li></ul>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn primary">View</button>
+          <button class="btn ghost">Details</button>
+        </div>
+      </article>
+
+      <!-- Add more cards as needed -->
+    </section>
+  </main>
+
+  <footer class="site-footer">© 2026 Ahmad Noor</footer>
+
+</body>
+</html>

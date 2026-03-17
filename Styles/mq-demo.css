@@ -1,0 +1,177 @@
+/* File mq-demo.css
+   Demonstrates breakpoints, layout changes, typography scaling, and navigation patterns
+   Uses CSS Grid for main layout and Flexbox for component internals
+*/
+
+:root{
+  --gap:16px;
+  --sidebar-w:260px;
+  --sidebar-collapsed-w:72px;
+  --bg:#f7fbff;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --accent:#2563eb;
+  --radius:12px;
+  --max-width:1200px;
+  --bp-xs:399px;
+  --bp-sm:699px;
+  --bp-md:999px;
+  --bp-lg:1399px;
+}
+
+/* Reset */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#0b1220;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+/* Page grid skeleton using CSS Grid */
+.page{
+  display:grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "sidebar topbar"
+    "sidebar main"
+    "sidebar footer";
+  gap:var(--gap);
+  min-height:100vh;
+  padding:20px;
+}
+
+/* Sidebar */
+.sidebar{
+  grid-area:sidebar;
+  background:linear-gradient(180deg,#ffffff,#f0f6ff);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:0 8px 24px rgba(16,24,40,0.06);
+  position:sticky;
+  top:20px;
+  height:calc(100vh - 40px);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  transition:width .22s ease, transform .22s ease;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+.brand-text{font-weight:700}
+
+/* Nav uses Flexbox for internals */
+.nav{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;color:var(--muted);font-weight:600}
+.nav-item.active{background:linear-gradient(90deg, rgba(37,99,235,0.08), rgba(124,58,237,0.04));color:var(--accent)}
+
+/* Topbar */
+.topbar{
+  grid-area:topbar;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 16px;
+  border-radius:10px;
+  background:linear-gradient(180deg,#fff,#f8fbff);
+  box-shadow:0 6px 18px rgba(16,24,40,0.04);
+}
+.left{display:flex;align-items:center;gap:12px}
+.menu-btn{display:none;padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(11,18,32,0.06);cursor:pointer}
+.site-title{font-weight:700}
+
+/* Breakpoint indicator */
+.breakpoint-indicator{padding:8px 12px;border-radius:999px;background:#eef6ff;border:1px solid rgba(37,99,235,0.08);font-weight:700;color:var(--accent)}
+
+/* Main content area uses responsive container */
+.main{
+  grid-area:main;
+  padding:12px;
+  max-width:var(--max-width);
+  margin:0 auto;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+/* Intro */
+.intro .lead{color:var(--muted)}
+
+/* Grid demo uses CSS Grid and auto-fit for fluid columns */
+.grid-demo{
+  display:grid;
+  gap:12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.card{background:var(--card);padding:18px;border-radius:10px;box-shadow:0 8px 20px rgba(16,24,40,0.04);text-align:center;font-weight:700}
+
+/* Typography scaling demonstration using clamp */
+.display{
+  font-size: clamp(28px, 4vw, 40px);
+  margin:6px 0;
+  font-weight:800;
+}
+.heading{
+  font-size: clamp(20px, 2.6vw, 28px);
+  margin:6px 0;
+  font-weight:700;
+}
+.body{
+  font-size: clamp(14px, 1.6vw, 16px);
+  margin:6px 0;
+  color:var(--muted);
+}
+
+/* Navigation pattern examples */
+.nav-examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.nav-example{background:var(--card);padding:12px;border-radius:10px;box-shadow:0 8px 20px rgba(16,24,40,0.04)}
+
+/* Stat cards use Flexbox and wrap on small screens */
+.stats{display:flex;gap:12px;flex-wrap:wrap}
+.stat{background:var(--card);padding:12px;border-radius:10px;display:flex;align-items:center;justify-content:space-between;min-width:200px;flex:1 1 260px;box-shadow:0 8px 20px rgba(16,24,40,0.04)}
+.stat-left{display:flex;flex-direction:column}
+.stat-value{font-weight:800;font-size:18px}
+.stat-label{color:var(--muted);font-size:13px}
+
+/* Footer */
+.footer{grid-area:footer;padding:12px;text-align:center;color:var(--muted)}
+
+/* Sidebar collapsed state for tablet */
+.sidebar.collapsed{width:var(--sidebar-collapsed-w);overflow:hidden}
+.sidebar.collapsed .brand-text{opacity:0;transform:translateX(-6px);pointer-events:none}
+.sidebar.collapsed .nav-item{justify-content:center;padding:10px}
+
+/* Responsive breakpoints and layout changes */
+/* Mobile first adjustments */
+@media (max-width: 699px){
+  .page{grid-template-columns:1fr;grid-template-areas:"topbar" "main" "footer";padding:12px}
+  .sidebar{position:fixed;left:12px;top:12px;transform:translateX(-120%);height:calc(100vh - 24px);z-index:60}
+  .sidebar.open{transform:translateX(0)}
+  .menu-btn{display:inline-flex}
+  .grid-demo{grid-template-columns:1fr}
+  .stats{flex-direction:column}
+}
+
+/* Tablet: collapse sidebar to icons only and show different layout */
+@media (min-width:700px) and (max-width:999px){
+  .page{grid-template-columns: var(--sidebar-collapsed-w) 1fr;grid-template-areas:"sidebar topbar" "sidebar main" "sidebar footer"}
+  .sidebar{width:var(--sidebar-collapsed-w)}
+  .sidebar.collapsed{width:var(--sidebar-collapsed-w)}
+  .nav-item{font-size:13px}
+  .grid-demo{grid-template-columns:repeat(2,1fr)}
+}
+
+/* Desktop: full sidebar and multi column layout */
+@media (min-width:1000px){
+  .page{grid-template-columns: var(--sidebar-w) 1fr;grid-template-areas:"sidebar topbar" "sidebar main" "sidebar footer"}
+  .grid-demo{grid-template-columns:repeat(3,1fr)}
+}
+
+/* Large screens: denser grid */
+@media (min-width:1400px){
+  .grid-demo{grid-template-columns:repeat(4,1fr)}
+}
+
+/* Accessibility and reduced motion */
+:focus-visible{outline:3px solid rgba(37,99,235,0.14);outline-offset:4px}
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important;animation:none!important}
+}

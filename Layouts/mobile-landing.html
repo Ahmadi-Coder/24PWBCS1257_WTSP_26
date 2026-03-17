@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Product — Mobile First Landing</title>
+
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/mobile-landing.css">
+  <link rel="stylesheet" href="../styles/utilities.css">
+  <link rel="stylesheet" href="../styles/preferences.css">
+</head>
+
+<body>
+  <header class="site-header container">
+  <a class="logo" href="../index.html">Brand</a>
+  <button class="nav-toggle" aria-expanded="false" aria-label="Open menu">☰</button>
+  <nav class="nav" aria-label="Primary navigation">
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#signup">Get started</a>
+  </nav>
+  <!-- Dark/Light mode toggle button -->
+  <button id="theme-toggle" class="btn btn-ghost">Toggle Theme</button>
+</header>
+
+
+  <main>
+    <section class="hero container" aria-labelledby="hero-title">
+      <picture>
+        <source srcset="../Images/Products/perfume.jpg" media="(max-width:599px)">
+        <source srcset="../Images/Products/samsung-pc.jpg" media="(max-width:999px)">
+        <img src="../Images/Products/iphone-setup.jpg"
+             alt="Product hero"
+             loading="eager"
+             decoding="async"
+             width="1600" height="900">
+      </picture>
+
+      <div class="hero-body">
+        <h1 id="hero-title">Simple product headline that converts</h1>
+        <p class="lead">One short sentence explaining the main benefit for mobile users.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#signup">Get started</a>
+          <a class="btn btn-ghost" href="#features">Learn more</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features container" aria-label="Features">
+      <article class="feature">
+        <h3>Fast on mobile</h3>
+        <p>Optimized images, minimal JS, and critical CSS for quick loads.</p>
+      </article>
+      <article class="feature">
+        <h3>Secure</h3>
+        <p>Privacy‑first defaults and secure storage options.</p>
+      </article>
+      <article class="feature">
+        <h3>Reliable</h3>
+        <p>Works on flaky networks and supports offline fallback.</p>
+      </article>
+    </section>
+
+    <section id="signup" class="signup container" aria-labelledby="signup-title">
+      <h2 id="signup-title">Join the waitlist</h2>
+      <form class="signup-form" action="#" method="post" novalidate>
+        <label class="field">
+          <span class="label-text">Email</span>
+          <input type="email" name="email" required inputmode="email" autocomplete="email" placeholder="you@example.com">
+        </label>
+        <button class="btn btn-primary" type="submit">Join now</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <small>© 2026 Brand — Built mobile first</small>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Navigation toggle
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.nav');
+      if (btn && nav) {
+        btn.addEventListener('click', () => {
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+          nav.classList.toggle('open');
+        });
+      }
+
+      // Dark/Light mode toggle
+      const themeBtn = document.getElementById('theme-toggle');
+      themeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+      });
+    });
+
+    const themeBtn = document.getElementById('theme-toggle');
+themeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+});
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+/* File: media-queries.css
+   Float Classic — uses floats, negative margin trick for center column,
+   and media queries to stack on small screens. */
+:root{
+  --max-width:1200px;
+  --gutter:16px;
+  --sidebar:220px;
+  --bg:#f7f9fc;
+  --card:#ffffff;
+  --muted:#6b7280;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:#0b1220}
+.hg-header,.hg-footer{background:var(--card);padding:18px;margin:var(--gutter);border-radius:8px;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+.hg-wrap{max-width:var(--max-width);margin:0 auto;overflow:hidden;padding:0 var(--gutter)}
+
+/* Sidebars: fixed width using floats */
+.hg-left{float:left;width:var(--sidebar);margin-right:var(--gutter);background:var(--card);padding:16px;border-radius:8px;box-shadow:0 8px 24px rgba(2,6,23,0.04)}
+.hg-right{float:right;width:var(--sidebar);margin-left:var(--gutter);background:var(--card);padding:16px;border-radius:8px;box-shadow:0 8px 24px rgba(2,6,23,0.04)}
+
+/* Center column uses negative margins to sit between floats */
+.hg-main{background:var(--card);padding:20px;border-radius:8px;margin:0 calc(var(--sidebar) + var(--gutter));box-shadow:0 10px 30px rgba(2,6,23,0.06)}
+
+/* Clearfix for footer/header spacing */
+.hg-header::after,.hg-footer::after{content:"";display:table;clear:both}
+
+/* Responsive: stack columns on small screens */
+@media (max-width:900px){
+  .hg-left,.hg-right,.hg-main{float:none;width:100%;margin:0 0 var(--gutter) 0}
+  .hg-wrap{padding:0 12px}
+}
+
+/* Accessibility and small polish */
+.hg-main h1{margin-top:0}

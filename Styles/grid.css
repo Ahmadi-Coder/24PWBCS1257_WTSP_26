@@ -1,0 +1,54 @@
+/* File: grid.css
+   Grid Areas Master — named grid areas with responsive templates. */
+:root{
+  --max-width:1200px;
+  --gap:18px;
+  --bg:#f6f8fb;
+  --card:#ffffff;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#0b1220}
+.hg-grid{display:grid;gap:var(--gap);max-width:var(--max-width);margin:18px auto;padding:16px}
+
+/* Mobile: single column stack using named areas */
+.hg-grid{
+  grid-template-columns:1fr;
+  grid-template-areas:
+    "header"
+    "main"
+    "left"
+    "right"
+    "footer";
+}
+.hg-header{grid-area:header;background:var(--card);padding:16px;border-radius:8px}
+.hg-left{grid-area:left;background:var(--card);padding:14px;border-radius:8px}
+.hg-main{grid-area:main;background:var(--card);padding:18px;border-radius:8px}
+.hg-right{grid-area:right;background:var(--card);padding:14px;border-radius:8px}
+.hg-footer{grid-area:footer;background:var(--card);padding:16px;border-radius:8px}
+
+/* Tablet: two-column composition */
+@media (min-width:700px){
+  .hg-grid{
+    grid-template-columns: 1fr 320px;
+    grid-template-areas:
+      "header header"
+      "main left"
+      "main right"
+      "footer footer";
+  }
+}
+
+/* Desktop: three-column holy grail */
+@media (min-width:1100px){
+  .hg-grid{
+    grid-template-columns: 220px 1fr 220px;
+    grid-template-areas:
+      "header header header"
+      "left main right"
+      "footer footer footer";
+    align-items:start;
+  }
+}
+
+/* Small polish */
+.hg-main h1{margin-top:0}

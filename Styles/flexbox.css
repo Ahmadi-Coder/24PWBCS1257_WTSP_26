@@ -1,0 +1,36 @@
+/* File: flexbox.css
+   Flex Mobile First — mobile-first approach using flexbox and order.
+   Footer naturally follows content. */
+:root{
+  --max-width:1200px;
+  --gap:16px;
+  --sidebar-min:200px;
+  --bg:#fbfcfe;
+  --card:#ffffff;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#0b1220}
+.hg-header,.hg-footer{background:var(--card);padding:16px;margin:16px;border-radius:8px;box-shadow:0 8px 20px rgba(2,6,23,0.05)}
+.hg-flex{display:flex;flex-direction:column;gap:var(--gap);max-width:var(--max-width);margin:0 auto;padding:0 16px}
+
+/* Default mobile stacking and ordering */
+.hg-left{order:1;background:var(--card);padding:14px;border-radius:8px}
+.hg-main{order:2;background:var(--card);padding:18px;border-radius:8px;flex:1}
+.hg-right{order:3;background:var(--card);padding:14px;border-radius:8px}
+
+/* Tablet and up: two-column layout */
+@media (min-width:700px){
+  .hg-flex{flex-direction:row;align-items:flex-start}
+  .hg-left{order:1;flex:0 0 var(--sidebar-min)}
+  .hg-main{order:2;flex:1 1 auto}
+  .hg-right{order:3;flex:0 0 var(--sidebar-min)}
+}
+
+/* Desktop: ensure sidebars remain fixed and main grows */
+@media (min-width:1100px){
+  .hg-left,.hg-right{flex-basis:220px}
+  .hg-main{flex:1 1 60%}
+}
+
+/* Small polish */
+.hg-main h1{margin-top:0}

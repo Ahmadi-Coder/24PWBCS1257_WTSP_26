@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aurora Admin — Polished Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+            </defs>
+            <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#g1)"></rect>
+            <path d="M7 12h10M7 8h10M7 16h6" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="brand-text">Aurora Admin</span>
+      </div>
+
+      <nav class="nav" role="navigation" aria-label="Primary">
+        <a class="nav-item active" href="#"><span class="icon">🏠</span><span class="label">Overview</span></a>
+        <a class="nav-item" href="#"><span class="icon">🛒</span><span class="label">Orders</span></a>
+        <a class="nav-item" href="#"><span class="icon">📦</span><span class="label">Products</span></a>
+        <a class="nav-item" href="#"><span class="icon">👥</span><span class="label">Customers</span></a>
+        <a class="nav-item" href="#"><span class="icon">📊</span><span class="label">Reports</span></a>
+        <a class="nav-item" href="#"><span class="icon">⚙️</span><span class="label">Settings</span></a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="collapseBtn" class="btn-ghost" aria-pressed="false" title="Collapse sidebar">⤺</button>
+        <button id="themeBtn" class="btn-ghost" aria-pressed="false" title="Toggle theme">🌓</button>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar" role="banner">
+        <div class="left">
+          <button id="menuToggle" class="menu-btn" aria-controls="sidebar" aria-expanded="false" aria-label="Open menu">☰</button>
+          <div class="search" role="search">
+            <input id="searchInput" type="search" placeholder="Search orders, products..." aria-label="Search" />
+            <button class="search-btn" aria-label="Submit search">🔍</button>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="top-actions" role="group" aria-label="Top actions">
+            <button class="icon-btn" aria-label="Notifications">🔔<span class="badge" aria-hidden="true">3</span></button>
+            <button class="icon-btn" aria-label="Messages">✉️</button>
+            <div class="profile" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              <div class="avatar" aria-hidden="true">AH</div>
+              <div class="profile-name">Ahmad</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="content" id="content" role="main">
+        <section class="stats" aria-label="Key metrics">
+          <article class="stat-card gradient-1" data-target="1248">
+            <div class="stat-left">
+              <div class="stat-title">New Orders</div>
+              <div class="stat-value" data-value>0</div>
+            </div>
+            <div class="stat-right positive">+8%</div>
+          </article>
+
+          <article class="stat-card gradient-2" data-target="34120">
+            <div class="stat-left">
+              <div class="stat-title">Revenue</div>
+              <div class="stat-value" data-value>$0</div>
+            </div>
+            <div class="stat-right positive">+12%</div>
+          </article>
+
+          <article class="stat-card gradient-3" data-target="3412">
+            <div class="stat-left">
+              <div class="stat-title">Active Users</div>
+              <div class="stat-value" data-value>0</div>
+            </div>
+            <div class="stat-right positive">+3%</div>
+          </article>
+
+          <article class="stat-card gradient-4" data-target="24">
+            <div class="stat-left">
+              <div class="stat-title">Low Stock</div>
+              <div class="stat-value" data-value>0</div>
+            </div>
+            <div class="stat-right neutral">—</div>
+          </article>
+        </section>
+
+        <section class="panels" aria-label="Dashboard panels">
+          <div class="panel panel-graph">
+            <div class="panel-header">
+              <h2>Sales Overview</h2>
+              <div class="panel-actions">
+                <button class="btn-ghost">Last 7d</button>
+                <button class="btn-ghost">Export</button>
+              </div>
+            </div>
+            <div class="panel-body">
+              <canvas id="salesChart" aria-label="Sales chart" role="img"></canvas>
+            </div>
+          </div>
+
+          <div class="panel panel-list">
+            <div class="panel-header">
+              <h3>Recent Orders</h3>
+            </div>
+            <div class="panel-body">
+              <ul class="list" aria-live="polite">
+                <li><strong>#1024</strong> — $129 — <span class="tag shipped">Shipped</span></li>
+                <li><strong>#1023</strong> — $49 — <span class="tag processing">Processing</span></li>
+                <li><strong>#1022</strong> — $299 — <span class="tag delivered">Delivered</span></li>
+                <li><strong>#1021</strong> — $19 — <span class="tag cancelled">Cancelled</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel panel-list">
+            <div class="panel-header">
+              <h3>Top Products</h3>
+            </div>
+            <div class="panel-body">
+              <ol class="list">
+                <li>Wireless Headphones</li>
+                <li>Smart Watch</li>
+                <li>Gaming Mouse</li>
+                <li>USB-C Hub</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <section class="table-panel">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Recent Activity</h3>
+              <div class="panel-actions">
+                <button class="btn-ghost">Filter</button>
+                <button class="btn-ghost" id="refreshBtn">Refresh</button>
+              </div>
+            </div>
+            <div class="panel-body">
+              <table class="table" role="table" aria-label="Recent activity table">
+                <thead>
+                  <tr><th>Order</th><th>Customer</th><th>Amount</th><th>Status</th><th>Date</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>#1024</td><td>Sarah K.</td><td>$129</td><td><span class="tag shipped">Shipped</span></td><td>Mar 16</td></tr>
+                  <tr><td>#1023</td><td>Omar R.</td><td>$49</td><td><span class="tag processing">Processing</span></td><td>Mar 16</td></tr>
+                  <tr><td>#1022</td><td>Leila M.</td><td>$299</td><td><span class="tag delivered">Delivered</span></td><td>Mar 15</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">© 2026 Aurora · Dashboard</footer>
+    </div>
+  </div>
+
+  <script>
+    // UI interactions, animated counters, Chart.js init, accessibility
+    document.addEventListener('DOMContentLoaded', () => {
+      const sidebar = document.getElementById('sidebar');
+      const menuToggle = document.getElementById('menuToggle');
+      const collapseBtn = document.getElementById('collapseBtn');
+      const themeBtn = document.getElementById('themeBtn');
+      const refreshBtn = document.getElementById('refreshBtn');
+
+      // Mobile sidebar toggle
+      menuToggle?.addEventListener('click', () => {
+        const open = sidebar.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(open));
+        if (open) sidebar.querySelector('a,button')?.focus();
+      });
+
+      // Collapse sidebar (compact)
+      collapseBtn?.addEventListener('click', () => {
+        const collapsed = sidebar.classList.toggle('collapsed');
+        collapseBtn.setAttribute('aria-pressed', String(collapsed));
+      });
+
+      // Theme toggle
+      themeBtn?.addEventListener('click', () => {
+        const light = document.documentElement.classList.toggle('theme-light');
+        themeBtn.setAttribute('aria-pressed', String(light));
+      });
+
+      // Refresh button microinteraction
+      refreshBtn?.addEventListener('click', () => {
+        refreshBtn.animate([{ transform: 'rotate(0deg)' }, { transform: 'rotate(360deg)' }], { duration: 600 });
+      });
+
+      // Animated counters
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const statCards = document.querySelectorAll('.stat-card');
+      function animateNumber(el, target, prefix = '', duration = 900) {
+        if (prefersReduced) { el.textContent = prefix + target.toLocaleString(); return; }
+        const start = 0;
+        const startTime = performance.now();
+        function tick(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const value = Math.floor(start + (target - start) * easeOutCubic(progress));
+          el.textContent = prefix + value.toLocaleString();
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+      function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+
+      // Trigger counters when visible
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const card = entry.target;
+          const target = Number(card.getAttribute('data-target')) || 0;
+          const valueEl = card.querySelector('[data-value]');
+          if (valueEl && !card.dataset.animated) {
+            const isCurrency = card.querySelector('.stat-title')?.textContent?.toLowerCase().includes('revenue');
+            animateNumber(valueEl, target, isCurrency ? '$' : '', 1000);
+            card.dataset.animated = 'true';
+          }
+        });
+      }, { threshold: 0.3 });
+      statCards.forEach(c => observer.observe(c));
+
+      // Chart.js sales chart
+      const ctx = document.getElementById('salesChart');
+      if (ctx && window.Chart) {
+        const labels = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+        const data = [420, 520, 480, 610, 720, 680, 790];
+        const chart = new Chart(ctx, {
+          type: 'line',
+          data: { labels, datasets: [{ label: 'Sales', data, fill: true, tension: 0.35, borderWidth: 2, borderColor: getComputedStyle(document.documentElement).getPropertyValue('--accent-a') || '#60a5fa', backgroundColor: 'rgba(96,165,250,0.12)', pointRadius: 3 }]},
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
+            scales: {
+              x: { grid: { display: false }, ticks: { color: getComputedStyle(document.documentElement).getPropertyValue('--muted') || '#9aa4b2' } },
+              y: { grid: { color: 'rgba(255,255,255,0.03)' }, ticks: { color: getComputedStyle(document.documentElement).getPropertyValue('--muted') || '#9aa4b2' } }
+            },
+            animation: { duration: 900, easing: 'easeOutCubic' }
+          }
+        });
+      }
+
+      // Close mobile sidebar on resize
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 900) sidebar.classList.remove('open');
+      });
+
+      // Escape closes mobile sidebar
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') sidebar.classList.remove('open'); });
+    });
+  </script>
+</body>
+</html>

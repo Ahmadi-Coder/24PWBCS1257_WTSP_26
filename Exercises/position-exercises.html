@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Task 3 - Positioning Challenge</title>
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/position.css" />
+</head>
+<body>
+
+  <header class="fixed-header" role="banner" aria-label="Main header">
+    <div class="brand">
+      <div class="logo">L3</div>
+      <div class="brand-text">
+        <h1>Positioning Challenge</h1>
+        <div class="sub">Lab 05 &amp; 06 — Task 3</div>
+      </div>
+    </div>
+
+    <nav aria-label="Primary navigation">
+      <button class="btn" id="open-modal-btn">Open Modal</button>
+    </nav>
+  </header>
+
+  <main class="wrapper" role="main">
+
+    <aside class="sticky-sidebar" aria-labelledby="sidebar-title">
+      <h2 id="sidebar-title">Sticky Sidebar</h2>
+      <p>This sidebar demonstrates <strong>position: sticky</strong>. It remains visible while scrolling on wide screens and stacks on small screens.</p>
+      <ul class="sidebar-list">
+        <li>Quick links</li>
+        <li>Related articles</li>
+        <li>Project highlights</li>
+      </ul>
+    </aside>
+
+    <section class="content" aria-labelledby="article-title">
+      <!-- Article grid: left image column, right single-column content -->
+      <article class="article-grid" aria-labelledby="article-title">
+        <figure class="article-figure">
+          <img src="../Images/Ahmad Noor.jpeg" alt="Ahmad Noor" class="article-image" />
+        </figure>
+
+        <div class="article-body">
+          <div class="bio" aria-label="Personal biography">
+            <h3>Bio</h3>
+
+            <div class="bio-grid" role="table" aria-label="Bio details">
+              <div class="bio-label" role="rowheader">Name</div>
+              <div class="bio-value" role="cell">Ahmad Noor</div>
+
+              <div class="bio-label" role="rowheader">Field of interest</div>
+              <div class="bio-value" role="cell">Modern front‑end development, responsive layouts, CSS architecture</div>
+
+              <div class="bio-label" role="rowheader">Currently studying</div>
+              <div class="bio-value" role="cell">Web Technologies, 4th semester, UET Peshawar</div>
+
+              <div class="bio-label" role="rowheader">Hobbies</div>
+              <div class="bio-value" role="cell">UI experiments, UX reading, photography</div>
+
+              <div class="bio-label" role="rowheader">Projects</div>
+              <div class="bio-value" role="cell">Magazine layouts, dashboard prototypes, personal portfolio</div>
+            </div>
+
+            <p class="note" style="margin-top:10px;color:var(--muted)">Edit any line to add more specific projects, links, or achievements.</p>
+          </div>
+
+          <div class="controls">
+            <button class="btn" id="open-modal-inline">Open Modal Inline</button>
+          </div>
+
+          <div class="layer-demo" aria-hidden="false">
+            <div class="box box1">Layer 1</div>
+            <div class="box box2">Layer 2</div>
+            <div class="box box3">Layer 3</div>
+          </div>
+
+          <p class="layer-note">Boxes above are absolutely positioned with different <code>z-index</code> values to demonstrate stacking order.</p>
+        </div>
+      </article>
+    </section>
+
+    <div id="modal-backdrop" class="modal-backdrop" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+        <h3 id="modal-title">Modal Dialog</h3>
+        <p id="modal-desc">This modal is absolutely positioned on desktop and becomes full-screen on mobile. It supports keyboard closing and focus trapping.</p>
+        <div class="modal-actions">
+          <button class="btn" id="modal-close">Close</button>
+          <a class="btn action" href="#" id="modal-action">Primary Action</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    © 2026 Ahmad Noor | UET Peshawar
+  </footer>
+
+  <script>
+    (function () {
+      const openBtns = [document.getElementById('open-modal-btn'), document.getElementById('open-modal-inline')];
+      const backdrop = document.getElementById('modal-backdrop');
+      const modal = backdrop.querySelector('.modal');
+      const closeBtn = document.getElementById('modal-close');
+      const focusableSelector = 'a[href], button:not([disabled]), textarea, input, select';
+      let lastFocused = null;
+
+      function openModal() {
+        lastFocused = document.activeElement;
+        backdrop.style.display = 'flex';
+        backdrop.setAttribute('aria-hidden', 'false');
+        modal.classList.add('open');
+        const focusable = modal.querySelectorAll(focusableSelector);
+        if (focusable.length) focusable[0].focus();
+        document.body.style.overflow = 'hidden';
+        document.addEventListener('keydown', onKeyDown);
+      }
+
+      function closeModal() {
+        modal.classList.remove('open');
+        backdrop.setAttribute('aria-hidden', 'true');
+        backdrop.style.display = 'none';
+        document.body.style.overflow = '';
+        if (lastFocused) lastFocused.focus();
+        document.removeEventListener('keydown', onKeyDown);
+      }
+
+      function onKeyDown(e) {
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'Tab') {
+          const focusable = Array.from(modal.querySelectorAll(focusableSelector));
+          if (!focusable.length) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+
+      openBtns.forEach(btn => btn && btn.addEventListener('click', (e) => { e.preventDefault(); openModal(); }));
+      closeBtn.addEventListener('click', (e) => { e.preventDefault(); closeModal(); });
+      backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closeModal(); });
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Responsive Data Table</title>
+  <link rel="stylesheet" href="../Styles/responsive.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>Orders</h1>
+      <div class="controls">
+        <label class="visually-hidden" for="colToggle">Toggle columns</label>
+        <button id="colToggle" class="btn">Toggle Details Column</button>
+      </div>
+    </header>
+
+    <section aria-labelledby="tableTitle">
+      <h2 id="tableTitle" class="visually-hidden">Orders table</h2>
+
+      <div class="table-wrap" role="region" aria-label="Orders data table">
+        <table class="data-table" id="dataTable">
+          <caption class="visually-hidden">Recent orders with status and amount</caption>
+          <thead>
+            <tr>
+              <th scope="col" data-sort="order">Order</th>
+              <th scope="col" data-sort="customer">Customer</th>
+              <th scope="col" data-sort="amount">Amount</th>
+              <th scope="col" data-sort="status">Status</th>
+              <th scope="col" class="col-details">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Order">#1024</td>
+              <td data-label="Customer">Sarah K.</td>
+              <td data-label="Amount">$129</td>
+              <td data-label="Status"><span class="tag shipped">Shipped</span></td>
+              <td class="col-details" data-label="Details">Shipped via UPS on Mar 16</td>
+            </tr>
+            <tr>
+              <td data-label="Order">#1023</td>
+              <td data-label="Customer">Omar R.</td>
+              <td data-label="Amount">$49</td>
+              <td data-label="Status"><span class="tag processing">Processing</span></td>
+              <td class="col-details" data-label="Details">Payment pending</td>
+            </tr>
+            <tr>
+              <td data-label="Order">#1022</td>
+              <td data-label="Customer">Leila M.</td>
+              <td data-label="Amount">$299</td>
+              <td data-label="Status"><span class="tag delivered">Delivered</span></td>
+              <td class="col-details" data-label="Details">Delivered Mar 15</td>
+            </tr>
+            <tr>
+              <td data-label="Order">#1021</td>
+              <td data-label="Customer">Aisha N.</td>
+              <td data-label="Amount">$19</td>
+              <td data-label="Status"><span class="tag cancelled">Cancelled</span></td>
+              <td class="col-details" data-label="Details">Refund issued</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="responsive-table.js"></script>
+</body>
+</html>

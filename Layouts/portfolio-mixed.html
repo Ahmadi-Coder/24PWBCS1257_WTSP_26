@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Mixed Layouts</title>
+  <link rel="stylesheet" href="../Styles/portfolio.css" />
+</head>
+<body>
+  <div class="site">
+    <header class="masthead">
+      <div class="brand">
+        <h1 class="logo">Aurora Studio</h1>
+        <p class="tag">Design · Photo · Motion</p>
+      </div>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#">Work</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <section class="hero">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop"
+            srcset="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800 800w,
+                    https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200 1200w,
+                    https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600 1600w"
+            sizes="(max-width:799px) 100vw, (max-width:1199px) 80vw, 60vw"
+            alt="Coastal hero">
+        <div class="hero-overlay">
+          <h2>Selected Projects</h2>
+          <p>Explorations in architecture, editorial and motion.</p>
+        </div>
+        <div class="decor decor-blob" aria-hidden="true"></div>
+      </section>
+
+      <aside class="sidebar">
+        <div class="about">
+          <h3>About</h3>
+          <p>Designer & photographer. I craft visual stories for brands and publications.</p>
+        </div>
+      </aside>
+
+      <section class="projects" aria-label="Project gallery">
+        <!-- Masonry on wide screens, stacked on mobile -->
+        <div class="gallery">
+          <!-- Each card uses Flexbox internally -->
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=800&auto=format&fit=crop" alt="Project 1">
+            <div class="card-body">
+              <h4>Portraits of Makers</h4>
+              <p class="meta">Editorial · 2025</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=800&auto=format&fit=crop" alt="Project 2">
+            <div class="card-body">
+              <h4>Urban Gardens</h4>
+              <p class="meta">Branding · 2024</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop" alt="Project 3">
+            <div class="card-body">
+              <h4>Night Markets</h4>
+              <p class="meta">Photo Series · 2023</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=800&auto=format&fit=crop" alt="Project 4">
+            <div class="card-body">
+              <h4>Coastal Trails</h4>
+              <p class="meta">Travel · 2025</p>
+            </div>
+          </article>
+
+          <!-- add more cards as needed -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Aurora Studio</p>
+    </footer>
+  </div>
+</body>
+</html>

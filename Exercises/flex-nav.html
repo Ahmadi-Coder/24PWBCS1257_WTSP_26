@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Task 4 Flexbox Navigation System</title>
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/flex-nav.css" />
+</head>
+<body>
+
+  <!-- Top header with main nav -->
+  <header class="topbar" role="banner">
+    <div class="topbar-inner">
+      <div class="brand">MySite</div>
+
+      <!-- Main horizontal nav -->
+      <nav class="main-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#">Home</a></li>
+          <li class="nav-item has-dropdown">
+            <button class="nav-btn" aria-expanded="false">Services ▾</button>
+            <ul class="dropdown">
+              <li><a href="#">Design</a></li>
+              <li><a href="#">Development</a></li>
+              <li><a href="#">Consulting</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a href="#">Portfolio</a></li>
+          <li class="nav-item has-dropdown">
+            <button class="nav-btn" aria-expanded="false">About ▾</button>
+            <ul class="dropdown">
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Hamburger for mobile -->
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile nav (slides down) -->
+  <nav id="mobile-menu" class="mobile-nav" aria-hidden="true">
+    <ul class="mobile-list">
+      <li><a href="#">Home</a></li>
+      <li class="mobile-group">
+        <button class="mobile-toggle" aria-expanded="false">Services ▾</button>
+        <ul class="mobile-sub">
+          <li><a href="#">Design</a></li>
+          <li><a href="#">Development</a></li>
+          <li><a href="#">Consulting</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Portfolio</a></li>
+      <li class="mobile-group">
+        <button class="mobile-toggle" aria-expanded="false">About ▾</button>
+        <ul class="mobile-sub">
+          <li><a href="#">Team</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="layout">
+    <!-- Vertical sidebar navigation -->
+    <aside class="side-nav" aria-label="Sidebar">
+      <ul>
+        <li><a href="#">Overview</a></li>
+        <li><a href="#">Reports</a></li>
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <h1>Flexbox Navigation System</h1>
+      <p>Demo content. Resize the viewport to see the horizontal nav collapse into a hamburger menu, the sidebar stack on small screens, and dropdowns stack inside the mobile menu.</p>
+      <section class="demo-cards">
+        <article class="card">Card A</article>
+        <article class="card">Card B</article>
+        <article class="card">Card C</article>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">© 2026 Ahmad Noor</footer>
+
+  <script>
+    // Toggle mobile menu
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.setAttribute('aria-hidden', String(expanded));
+      mobileMenu.classList.toggle('open');
+    });
+
+    // Mobile dropdown toggles
+    document.querySelectorAll('.mobile-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        btn.nextElementSibling.classList.toggle('open');
+      });
+    });
+
+    // Desktop dropdown hover/focus behavior (progressive enhancement)
+    document.querySelectorAll('.has-dropdown').forEach(item => {
+      const btn = item.querySelector('.nav-btn');
+      const menu = item.querySelector('.dropdown');
+      btn.addEventListener('click', (e) => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+      });
+      // close on outside click
+      document.addEventListener('click', (e) => {
+        if (!item.contains(e.target)) {
+          btn.setAttribute('aria-expanded', 'false');
+          menu.classList.remove('open');
+        }
+      });
+    });
+
+    // Keyboard accessibility: close mobile menu with Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        mobileMenu.classList.remove('open');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.querySelectorAll('.mobile-sub.open').forEach(s => s.classList.remove('open'));
+        document.querySelectorAll('.mobile-toggle[aria-expanded="true"]').forEach(b => b.setAttribute('aria-expanded','false'));
+      }
+    });
+  </script>
+</body>
+</html>

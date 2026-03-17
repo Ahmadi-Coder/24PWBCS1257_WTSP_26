@@ -1,0 +1,76 @@
+/* ---------------- Preference Media Queries ---------------- */
+body.dark-mode {
+  background: #0b1220;
+  color: #ffffff;
+}
+body.dark-mode .feature {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+body.dark-mode .btn-primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* Dark / Light Mode (automatic) */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #0b1220;
+    color: #ffffff;
+  }
+  .feature {
+    background: #1e293b;
+    color: #e2e8f0;
+  }
+}
+@media (prefers-color-scheme: light) {
+  body {
+    background: #ffffff;
+    color: #0b1220;
+  }
+}
+
+/* Manual Dark Mode Toggle */
+body.dark-mode {
+  background: #0b1220;
+  color: #ffffff;
+}
+body.dark-mode .feature {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+body.dark-mode .btn-primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: more) {
+  body {
+    background: #000;
+    color: #fff;
+  }
+  a {
+    color: #ff0; /* bright yellow links */
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 12pt;
+  }
+  nav, .hero-ctas, .signup {
+    display: none; /* hide nonessential sections */
+  }
+}

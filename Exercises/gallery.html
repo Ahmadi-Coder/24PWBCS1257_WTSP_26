@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Task 6 CSS Grid Photo Gallery</title>
+  <link rel="stylesheet" href="../styles/gallery.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">Gallery Lab</div>
+    <p class="lead">Task 6 — CSS Grid Photo Gallery</p>
+  </header>
+
+  <main class="container">
+    <!-- Optional hero layout wrapper (uses named grid areas) -->
+    <section class="photo-gallery" aria-label="Project photo gallery">
+      <!-- Each figure can include data-span attributes to hint row/col spans -->
+      <figure class="gallery-item" tabindex="0" data-span="2">
+        <img src="../Images/Project Alpha.png" alt="Project Alpha">
+        <figcaption>
+          <h3>Project Alpha</h3>
+          <p>Drone mapping prototype — coastal survey.</p>
+          <a class="cta" href="#" aria-label="View Project Alpha">View</a>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery-item" tabindex="0" data-span="1">
+        <img src="../Images/Project Beta.png" alt="Project Beta">
+        <figcaption>
+          <h3>Project Beta</h3>
+          <p>Dashboard UI and analytics components.</p>
+          <a class="cta" href="#" aria-label="View Project Beta">View</a>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery-item" tabindex="0" data-span="1">
+        <img src="../Images/Project Gamma.png" alt="Project Gamma">
+        <figcaption>
+          <h3>Project Gamma</h3>
+          <p>Gaming peripherals concept and lighting tests.</p>
+          <a class="cta" href="#" aria-label="View Project Gamma">View</a>
+        </figcaption>
+      </figure>
+
+      <!-- Additional examples -->
+      <figure class="gallery-item" tabindex="0" data-span="1"><img src="../Images/Ahmad Noor.jpeg" alt="Photo 1"><figcaption><h3>Photo 1</h3><a class="cta" href="#">View</a></figcaption></figure>
+      <figure class="gallery-item" tabindex="0" data-span="2"><img src="../Images/Group Pic.jpg" alt="Photo 2"><figcaption><h3>Photo 2</h3><a class="cta" href="#">View</a></figcaption></figure>
+      <figure class="gallery-item" tabindex="0" data-span="1"><img src="../Images/Ahmad.jpg" alt="Photo 3"><figcaption><h3>Photo 3</h3><a class="cta" href="#">View</a></figcaption></figure>
+    </section>
+  </main>
+
+  <footer class="site-footer">© 2026 Ahmad Noor</footer>
+
+  <!-- Optional JS: compute grid-row spans for masonry effect -->
+  <script>
+    (function () {
+      const gallery = document.querySelector('.photo-gallery');
+      if (!gallery) return;
+      const rowHeight = parseInt(getComputedStyle(gallery).getPropertyValue('grid-auto-rows'));
+      const rowGap = parseInt(getComputedStyle(gallery).getPropertyValue('gap'));
+      function resizeItems() {
+        gallery.querySelectorAll('.gallery-item').forEach(item => {
+          const img = item.querySelector('img');
+          const spanHint = parseInt(item.dataset.span || '1', 10);
+          // compute height after image loaded
+          const contentHeight = item.getBoundingClientRect().height;
+          const rowSpan = Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap)) * spanHint;
+          item.style.gridRow = 'span ' + rowSpan;
+        });
+      }
+      // run after images load
+      window.addEventListener('load', resizeItems);
+      window.addEventListener('resize', () => { setTimeout(resizeItems, 120); });
+    })();
+  </script>
+
+</body>
+</html>

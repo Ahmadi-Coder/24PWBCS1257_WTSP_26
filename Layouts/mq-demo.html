@@ -1,0 +1,163 @@
+<!-- File: mq-demo.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Media Query Demonstration</title>
+  <link rel="stylesheet" href="mq-demo.css" />
+</head>
+<body>
+  <div class="page">
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <div class="brand">
+        <div class="logo">MQ</div>
+        <div class="brand-text">MediaQuery Lab</div>
+      </div>
+
+      <nav class="nav" id="nav" aria-label="Main">
+        <a class="nav-item active" href="#">Overview</a>
+        <a class="nav-item" href="#">Layout</a>
+        <a class="nav-item" href="#">Typography</a>
+        <a class="nav-item" href="#">Navigation</a>
+        <a class="nav-item" href="#">Examples</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="collapseBtn" class="btn">Collapse</button>
+      </div>
+    </aside>
+
+    <header class="topbar" id="topbar">
+      <div class="left">
+        <button id="menuToggle" class="menu-btn" aria-controls="sidebar" aria-expanded="true">☰</button>
+        <div class="site-title">Media Query Demonstration</div>
+      </div>
+
+      <div class="right">
+        <div class="breakpoint-indicator" id="bpIndicator" aria-live="polite">Breakpoint: <strong id="bpName">unknown</strong></div>
+      </div>
+    </header>
+
+    <main class="main" id="main">
+      <section class="intro">
+        <h1>Why media queries matter</h1>
+        <p class="lead">This page demonstrates how layout, navigation, and typography adapt across screen sizes using CSS Grid, Flexbox, and responsive techniques.</p>
+      </section>
+
+      <section class="demo-grid" aria-label="Layout demonstration">
+        <h2>Layout changes</h2>
+        <div class="grid-demo">
+          <div class="card">Card A</div>
+          <div class="card">Card B</div>
+          <div class="card">Card C</div>
+          <div class="card">Card D</div>
+          <div class="card">Card E</div>
+          <div class="card">Card F</div>
+        </div>
+        <p class="note">Resize the window to see the grid reflow from single column to multi column and back.</p>
+      </section>
+
+      <section class="typography" aria-label="Typography scaling">
+        <h2>Typography scaling</h2>
+        <p class="type-sample display">Display text uses clamp for fluid scale</p>
+        <p class="type-sample heading">Heading uses clamp for responsive scale</p>
+        <p class="type-sample body">Body text uses relative units and adjusts at breakpoints to preserve rhythm and readability.</p>
+      </section>
+
+      <section class="nav-demo" aria-label="Navigation patterns">
+        <h2>Navigation pattern changes</h2>
+        <div class="nav-examples">
+          <div class="nav-example">
+            <h3>Desktop</h3>
+            <p>Sidebar navigation visible and expanded.</p>
+          </div>
+          <div class="nav-example">
+            <h3>Tablet</h3>
+            <p>Sidebar collapses to icons only. Toggle button collapses or expands.</p>
+          </div>
+          <div class="nav-example">
+            <h3>Mobile</h3>
+            <p>Topbar hamburger toggles off canvas navigation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="stat-cards" aria-label="Stat cards demonstration">
+        <h2>Stat cards using Flexbox</h2>
+        <div class="stats">
+          <article class="stat">
+            <div class="stat-left">
+              <div class="stat-value">1,248</div>
+              <div class="stat-label">New Orders</div>
+            </div>
+            <div class="stat-right">+8%</div>
+          </article>
+
+          <article class="stat">
+            <div class="stat-left">
+              <div class="stat-value">$34,120</div>
+              <div class="stat-label">Revenue</div>
+            </div>
+            <div class="stat-right">+12%</div>
+          </article>
+
+          <article class="stat">
+            <div class="stat-left">
+              <div class="stat-value">3,412</div>
+              <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat-right">+3%</div>
+          </article>
+        </div>
+        <p class="note">On narrow screens stat cards stack vertically using Flexbox wrap and media queries.</p>
+      </section>
+    </main>
+
+    <footer class="footer">Demo footer</footer>
+  </div>
+
+  <script>
+    // Breakpoint detection and UI behaviors
+    (function () {
+      const bpName = document.getElementById('bpName');
+      const bpIndicator = document.getElementById('bpIndicator');
+      const menuToggle = document.getElementById('menuToggle');
+      const sidebar = document.getElementById('sidebar');
+      const collapseBtn = document.getElementById('collapseBtn');
+
+      const breakpoints = [
+        { name: 'xs', mq: '(max-width: 399px)' },
+        { name: 'sm', mq: '(min-width:400px) and (max-width:699px)' },
+        { name: 'md', mq: '(min-width:700px) and (max-width:999px)' },
+        { name: 'lg', mq: '(min-width:1000px) and (max-width:1399px)' },
+        { name: 'xl', mq: '(min-width:1400px)' }
+      ];
+
+      function updateBreakpoint() {
+        const found = breakpoints.find(b => window.matchMedia(b.mq).matches);
+        bpName.textContent = found ? found.name : 'unknown';
+      }
+
+      window.addEventListener('resize', updateBreakpoint);
+      updateBreakpoint();
+
+      // Mobile nav toggle
+      menuToggle.addEventListener('click', () => {
+        const open = sidebar.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(open));
+      });
+
+      // Collapse sidebar for tablet
+      collapseBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+      });
+
+      // Close mobile sidebar on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') sidebar.classList.remove('open');
+      });
+    })();
+  </script>
+</body>
+</html>

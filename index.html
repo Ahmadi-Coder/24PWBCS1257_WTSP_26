@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lab05 Layouts — Hub</title>
+
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+  <header class="site-header container" role="banner">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">LN</div>
+      <div>
+        <h1>Lab05 Layouts</h1>
+        <p class="tagline">A curated playground for modern layout techniques</p>
+      </div>
+    </div>
+
+    <div class="header-controls" role="navigation" aria-label="Primary">
+      <nav class="nav">
+        <a href="layouts/magazine-float.html">Layouts</a>
+        <a href="exercises/display-exercises.html">Exercises</a>
+        <a href="layouts/responsive-demo.html">Responsive</a>
+      </nav>
+
+      <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle theme">
+        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path id="icon-path" fill="currentColor"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hub-hero" aria-labelledby="hub-title">
+      <div class="hero-left">
+        <h2 id="hub-title">Explore layouts, master responsiveness</h2>
+        <p class="lead">Interactive demos, exercises, and utilities — all in one elegant hub.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="layouts/dashboard-grid.html">Open Dashboard Demo</a>
+          <a class="btn btn-ghost" href="exercises/flexbox-exercises.html">Try Flexbox Exercises</a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <!-- layered SVG blobs for unique visual identity -->
+        <svg viewBox="0 0 600 400" class="hero-svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#7c3aed" stop-opacity="0.9"/>
+              <stop offset="1" stop-color="#2563eb" stop-opacity="0.9"/>
+            </linearGradient>
+            <filter id="blur">
+              <feGaussianBlur stdDeviation="30" />
+            </filter>
+          </defs>
+          <g filter="url(#blur)">
+            <ellipse cx="180" cy="120" rx="160" ry="90" fill="url(#g1)" opacity="0.95" class="blob blob-1"/>
+            <ellipse cx="420" cy="220" rx="180" ry="110" fill="#06b6d4" opacity="0.85" class="blob blob-2"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Layouts</h2>
+      <ul class="section-list">
+        <li><a class="card-link" href="layouts/magazine-float.html"><span class="card-left"><span class="card-badge">01</span><div><strong>Magazine Float</strong><div class="card-meta">Classic float techniques</div></div></span><span>Open</span></a></li>
+        <li><a class="card-link" href="layouts/holy-grail-comparison.html"><span class="card-left"><span class="card-badge">02</span><div><strong>Holy Grail</strong><div class="card-meta">Comparison approaches</div></div></span><span>Open</span></a></li>
+        <li><a class="card-link" href="layouts/dashboard-grid.html"><span class="card-left"><span class="card-badge">03</span><div><strong>Dashboard Grid</strong><div class="card-meta">Grid-based dashboard</div></div></span><span>Open</span></a></li>
+        <li><a class="card-link" href="layouts/portfolio-mixed.html"><span class="card-left"><span class="card-badge">04</span><div><strong>Portfolio Mixed</strong><div class="card-meta">Hybrid layout patterns</div></div></span><span>Open</span></a></li>
+        <li><a class="card-link" href="layouts/responsive-demo.html"><span class="card-left"><span class="card-badge">05</span><div><strong>Responsive Demo</strong><div class="card-meta">Breakpoint showcase</div></div></span><span>Open</span></a></li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Exercises</h2>
+      <ul class="section-list">
+        <li><a class="card-link" href="exercises/display-exercises.html"><span class="card-left"><span class="card-badge">A</span><div><strong>Display</strong><div class="card-meta">Block, inline, inline-block</div></div></span><span>Try</span></a></li>
+        <li><a class="card-link" href="exercises/float-exercises.html"><span class="card-left"><span class="card-badge">B</span><div><strong>Float</strong><div class="card-meta">Float-based layouts</div></div></span><span>Try</span></a></li>
+        <li><a class="card-link" href="exercises/flexbox-exercises.html"><span class="card-left"><span class="card-badge">C</span><div><strong>Flexbox</strong><div class="card-meta">Alignment and gaps</div></div></span><span>Try</span></a></li>
+        <li><a class="card-link" href="exercises/grid-exercises.html"><span class="card-left"><span class="card-badge">D</span><div><strong>Grid</strong><div class="card-meta">Template areas & tracks</div></div></span><span>Try</span></a></li>
+        <li><a class="card-link" href="exercises/media-query-exercises.html"><span class="card-left"><span class="card-badge">E</span><div><strong>Media Queries</strong><div class="card-meta">Breakpoints & utilities</div></div></span><span>Try</span></a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer container" role="contentinfo">
+    <small>© 2026 Ahmad Noor — Lab05 Layouts</small>
+  </footer>
+
+  <script>
+  (function(){
+    const btn = document.getElementById('theme-toggle');
+    const iconPath = document.getElementById('icon-path');
+
+    const ICONS = {
+      sun: "M12 4.5a1 1 0 0 1 1 1V7a1 1 0 1 1-2 0V5.5a1 1 0 0 1 1-1zm0 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm7-3.5a1 1 0 0 1 1 1H20a1 1 0 1 1 0-2h.5a1 1 0 0 1 1 1zM4 12a1 1 0 0 1 1-1H5a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1zm12.95 5.95a1 1 0 0 1 1.414 0l.354.354a1 1 0 1 1-1.414 1.414l-.354-.354a1 1 0 0 1 0-1.414zM6.636 6.636a1 1 0 0 1 1.414 0L8.404 7.99A1 1 0 1 1 6.99 9.404L5.05 7.464a1 1 0 0 1 1.586-1.586zM18.364 6.636a1 1 0 0 1 0 1.414l-1.05 1.05a1 1 0 1 1-1.414-1.414l1.05-1.05a1 1 0 0 1 1.414 0zM7.05 17.95a1 1 0 0 1 1.414 0l1.05 1.05a1 1 0 1 1-1.414 1.414l-1.05-1.05a1 1 0 0 1 0-1.414z",
+      moon: "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+    };
+
+    function setIcon(isDark){
+      iconPath.setAttribute('d', isDark ? ICONS.sun : ICONS.moon);
+    }
+
+    const stored = localStorage.getItem('lab05-theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = stored ? stored === 'dark' : prefersDark;
+    if(isDark) document.body.classList.add('dark-mode');
+    setIcon(isDark);
+    if(btn) btn.setAttribute('aria-pressed', String(isDark));
+
+    if(btn){
+      btn.addEventListener('click', () => {
+        const nowDark = document.body.classList.toggle('dark-mode');
+        setIcon(nowDark);
+        btn.setAttribute('aria-pressed', String(nowDark));
+        localStorage.setItem('lab05-theme', nowDark ? 'dark' : 'light');
+      });
+    }
+
+    // subtle parallax for blobs
+    const hero = document.querySelector('.hero-art');
+    window.addEventListener('pointermove', (e) => {
+      if(!hero) return;
+      const rect = hero.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) / rect.width;
+      const dy = (e.clientY - cy) / rect.height;
+      document.querySelectorAll('.blob').forEach((b, i) => {
+        const depth = (i + 1) * 6;
+        b.style.transform = `translate(${dx * depth}px, ${dy * depth}px)`;
+      });
+    }, {passive:true});
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shop — Product Grid</title>
+  <link rel="stylesheet" href="../styles/product-grid.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">My Shop</div>
+    <button class="filter-toggle" aria-controls="filters" aria-expanded="false">Filters</button>
+  </header>
+
+  <main class="shop-grid" role="main">
+    <!-- Filters sidebar (grid area: filters) -->
+    <aside id="filters" class="filters" aria-label="Product filters">
+      <div class="filters-inner">
+        <h2>Filters</h2>
+
+        <section class="filter-group">
+          <h3>Category</h3>
+          <label><input type="checkbox"> New Arrivals</label>
+          <label><input type="checkbox"> Best Sellers</label>
+          <label><input type="checkbox"> On Sale</label>
+        </section>
+
+        <section class="filter-group">
+          <h3>Price</h3>
+          <label><input type="radio" name="price"> Under $50</label>
+          <label><input type="radio" name="price"> $50–150</label>
+          <label><input type="radio" name="price"> $150+</label>
+        </section>
+
+        <button class="apply-filters">Apply</button>
+      </div>
+    </aside>
+
+    <!-- Products area (grid area: products) -->
+    <section class="products" aria-label="Product listing">
+      <!-- Controls row inside products -->
+      <div class="products-controls">
+        <div class="results">Showing <strong>22</strong> products</div>
+        <div class="sort">
+          <label for="sort">Sort</label>
+          <select id="sort">
+            <option>Featured</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Product grid (nested grid) -->
+      <div class="product-list">
+
+        <!-- 1 Dark Watch -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Dark%20Watch.jpg" alt="Dark Watch" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">Dark Watch</h3>
+            <div class="meta"><span class="price">$149</span><span class="rating">★★★★☆</span></div>
+            <p class="desc">Sleek dark smartwatch with premium finish.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 2 Gaming PC -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Gaming%20PC.jpg" alt="Gaming PC" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">Gaming PC</h3>
+            <div class="meta"><span class="price">$1,499</span><span class="rating">★★★★★</span></div>
+            <p class="desc">High-performance gaming rig with RGB cooling.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 3 Grossery Products -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Grossery%20Products.jpg" alt="Grossery Products" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">Grossery Set</h3>
+            <div class="meta"><span class="price">$39</span><span class="rating">★★★★☆</span></div>
+            <p class="desc">Cosmetic & skincare bundle — curated essentials.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 4 Iphone Combination -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Iphone%20Combination.jpg" alt="iPhone Combination" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">iPhone Combination</h3>
+            <div class="meta"><span class="price">$999</span><span class="rating">★★★★★</span></div>
+            <p class="desc">Bundle with phone, case and charger.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 5 Iphone Mobile -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Iphone%20Mobile.jpg" alt="iPhone Mobile accessories" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">iPhone Accessories</h3>
+            <div class="meta"><span class="price">$29</span><span class="rating">★★★☆☆</span></div>
+            <p class="desc">Cases, cables and chargers — red collection.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 6 Iphone Pen -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Iphone%20Pen.jpg" alt="iPhone Pen" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">iPhone Pen</h3>
+            <div class="meta"><span class="price">$19</span><span class="rating">★★★☆☆</span></div>
+            <p class="desc">Precision stylus for touchscreens.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 7 Iphone Set-Up -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Iphone%20Set-Up.jpg" alt="iPhone Set-Up" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">iPhone Bundle (Set-Up)</h3>
+            <div class="meta"><span class="price">$899</span><span class="rating">★★★★★</span></div>
+            <p class="desc">Complete iPhone setup — device + accessories.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 8 Men Dressing 2 -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Men%20Dressing%202.jpg" alt="Men Dressing 2" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">Men Dressing 2</h3>
+            <div class="meta"><span class="price">$69</span><span class="rating">★★★★☆</span></div>
+            <p class="desc">Stylish men's outfit — modern fit.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 9 Men Dressing 3 -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Men%20Dressing%203.jpg" alt="Men Dressing 3" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">Men Dressing 3</h3>
+            <div class="meta"><span class="price">$79</span><span class="rating">★★★★☆</span></div>
+            <p class="desc">Casual men's wear with premium fabric.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 10 Men Dressing Style -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Men%20Dressing%20Style.jpg" alt="Men Dressing Style" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">Men Dressing Style</h3>
+            <div class="meta"><span class="price">$89</span><span class="rating">★★★★☆</span></div>
+            <p class="desc">Contemporary men's style collection.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 11 PC Collection -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/PC%20Collection.jpg" alt="PC Collection" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">PC Collection</h3>
+            <div class="meta"><span class="price">$1,099</span><span class="rating">★★★★☆</span></div>
+            <p class="desc">Curated desktop setups for productivity.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 12 PC Full Set-Up -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/PC%20Full%20Set-Up.jpg" alt="PC Full Set-Up" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">PC Full Set-Up</h3>
+            <div class="meta"><span class="price">$1,599</span><span class="rating">★★★★★</span></div>
+            <p class="desc">Complete PC setup with monitor and peripherals.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 13 PC Set-Up -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/PC%20Set-Up.jpg" alt="PC Set-Up" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">PC Set-Up</h3>
+            <div class="meta"><span class="price">$999</span><span class="rating">★★★★☆</span></div>
+            <p class="desc">Desktop configuration for everyday use.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 14 Perfume -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Perfume.jpg" alt="Perfume" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">Perfume</h3>
+            <div class="meta"><span class="price">$59</span><span class="rating">★★★★☆</span></div>
+            <p class="desc">Signature fragrance with long-lasting notes.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 15 Samsung Device -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Samsung%20Device.jpg" alt="Samsung Device" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">Samsung Device</h3>
+            <div class="meta"><span class="price">$749</span><span class="rating">★★★★☆</span></div>
+            <p class="desc">Latest Samsung smartphone model.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 16 Samsung PC Full Set-Up -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Samsung%20PC%20Full%20Set-Up.jpg" alt="Samsung PC Full Set-Up" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">Samsung PC Full Set-Up</h3>
+            <div class="meta"><span class="price">$1,699</span><span class="rating">★★★★★</span></div>
+            <p class="desc">Premium Samsung desktop bundle.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 17 Samsung -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Samsung.jpg" alt="Samsung" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">Samsung</h3>
+            <div class="meta"><span class="price">$499</span><span class="rating">★★★★☆</span></div>
+            <p class="desc">Samsung electronics and accessories.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 18 Watch -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Watch.jpg" alt="Watch" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">Watch</h3>
+            <div class="meta"><span class="price">$129</span><span class="rating">★★★★☆</span></div>
+            <p class="desc">Classic wristwatch with leather strap.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 19 Watch1 -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Watch1.jpg" alt="Watch1" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">Watch 1</h3>
+            <div class="meta"><span class="price">$139</span><span class="rating">★★★★☆</span></div>
+            <p class="desc">Sport watch with durable strap.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 20 Watches Collection -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Watches%20Collection.jpg" alt="Watches Collection" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">Watches Collection</h3>
+            <div class="meta"><span class="price">$299</span><span class="rating">★★★★★</span></div>
+            <p class="desc">Curated collection of premium watches.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 21 Watches -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Watches.jpg" alt="Watches" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">Watches</h3>
+            <div class="meta"><span class="price">$179</span><span class="rating">★★★★☆</span></div>
+            <p class="desc">Everyday watches for all occasions.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+        <!-- 22 Watches (filename with trailing space) -->
+        <article class="product-card" tabindex="0">
+          <div class="media">
+            <img src="../Images/Products/Watches.jpg" alt="Watches (alternate)" loading="lazy">
+            <button class="quick">Quick view</button>
+          </div>
+          <div class="info">
+            <h3 class="title">Watches (Alt)</h3>
+            <div class="meta"><span class="price">$189</span><span class="rating">★★★★☆</span></div>
+            <p class="desc">Alternate watch listing from the collection.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button><button class="btn ghost">Details</button></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Off-canvas overlay -->
+  <div class="overlay" hidden></div>
+
+  <script>
+    // Off-canvas filter toggle
+    (function () {
+      const toggle = document.querySelector('.filter-toggle');
+      const filters = document.getElementById('filters');
+      const overlay = document.querySelector('.overlay');
+
+      function openFilters() {
+        filters.classList.add('open');
+        overlay.hidden = false;
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeFilters() {
+        filters.classList.remove('open');
+        overlay.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      toggle.addEventListener('click', () => {
+        filters.classList.contains('open') ? closeFilters() : openFilters();
+      });
+      overlay.addEventListener('click', closeFilters);
+      // Close on Escape
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeFilters(); });
+    })();
+  </script>
+</body>
+</html>

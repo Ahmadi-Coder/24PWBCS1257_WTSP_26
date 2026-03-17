@@ -1,0 +1,76 @@
+:root{
+  --gap:16px;
+  --max-width:980px;
+  --radius:10px;
+  --muted:#6b7280;
+  --accent:#2563eb;
+  --bg:#f7fbff;
+  --surface:#ffffff;
+}
+
+/* Reset */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#0b1220}
+.page{max-width:var(--max-width);margin:28px auto;padding:18px}
+.page-header{margin-bottom:18px}
+.lead{color:var(--muted);margin-top:6px}
+
+/* Form container */
+.form{display:flex;flex-direction:column;gap:20px}
+
+/* Section */
+.form-section{background:var(--surface);padding:16px;border-radius:var(--radius);box-shadow:0 8px 20px rgba(2,6,23,0.04)}
+.section-title{margin:0 0 12px 0;font-size:16px}
+
+/* Row: flex container for fields */
+.form-row{display:flex;gap:12px;flex-wrap:wrap}
+
+/* Field base */
+.field{display:flex;flex-direction:column;flex:1 1 220px;min-width:160px}
+.field--flex-2{flex:2 1 360px}
+.field--full{flex-basis:100%}
+.label-text{font-size:13px;color:var(--muted);margin-bottom:6px}
+input,select,textarea{padding:10px;border-radius:8px;border:1px solid rgba(11,18,32,0.06);font-size:14px;background:transparent}
+
+/* Inline controls (checkboxes/radios) */
+.inline-controls{display:flex;gap:12px;align-items:center}
+.small{font-size:13px;color:var(--muted)}
+
+/* Actions */
+.form-actions{display:flex;gap:12px;justify-content:flex-end;margin-top:8px}
+.btn{padding:10px 14px;border-radius:8px;border:0;cursor:pointer}
+.btn--primary{background:var(--accent);color:#fff}
+.btn--muted{background:#f1f5f9;color:#0b1220}
+
+/* Conditional row hidden by default; JS toggles visibility */
+.conditional-row{display:none;gap:12px}
+
+/* Responsive behavior */
+/* Mobile: single column stack */
+@media (max-width:699px){
+  .form-row{flex-direction:column}
+  .field{flex-basis:100%}
+  .form-actions{justify-content:stretch;flex-direction:column}
+  .btn{width:100%}
+}
+
+/* Tablet: two-column groups */
+@media (min-width:700px) and (max-width:999px){
+  .form-row{flex-direction:row}
+  .field{flex:1 1 45%}
+  .field--flex-2{flex:2 1 60%}
+  .form-actions{justify-content:flex-end}
+}
+
+/* Desktop: multi-column layout and show conditional fields */
+@media (min-width:1000px){
+  .form{gap:24px}
+  .form-row{align-items:flex-end}
+  .field{flex:1 1 30%}
+  .field--flex-2{flex:2 1 50%}
+  .conditional-row{display:flex}
+}
+
+/* Small polish */
+input[type="file"]{padding:6px}
+textarea{resize:vertical;min-height:80px}

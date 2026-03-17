@@ -1,0 +1,66 @@
+/* ---------------- Responsive Utility Classes ---------------- */
+
+/* Visibility */
+.hidden { display: none !important; }
+
+@media (max-width:767px) {
+  .show-mobile { display: block !important; }
+  .hide-mobile { display: none !important; }
+}
+@media (min-width:768px) {
+  .show-tablet { display: block !important; }
+  .hide-tablet { display: none !important; }
+}
+@media (min-width:1024px) {
+  .show-desktop { display: block !important; }
+  .hide-desktop { display: none !important; }
+}
+
+/* Spacing */
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 16px; }
+.p-1 { padding: 8px; }
+.p-2 { padding: 16px; }
+
+@media (min-width:768px) {
+  .mt-2-md { margin-top: 24px; }
+  .p-2-md { padding: 24px; }
+}
+@media (min-width:1024px) {
+  .mt-2-lg { margin-top: 32px; }
+  .p-2-lg { padding: 32px; }
+}
+
+/* Text alignment */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+@media (min-width:768px) {
+  .text-md-left { text-align: left; }
+  .text-md-center { text-align: center; }
+  .text-md-right { text-align: right; }
+}
+@media (min-width:1024px) {
+  .text-lg-left { text-align: left; }
+  .text-lg-center { text-align: center; }
+  .text-lg-right { text-align: right; }
+}
+
+/* Flexbox utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.flex-wrap { flex-wrap: wrap; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.items-center { align-items: center; }
+
+@media (min-width:768px) {
+  .flex-md-row { flex-direction: row; }
+  .justify-md-end { justify-content: flex-end; }
+}
+@media (min-width:1024px) {
+  .flex-lg-row { flex-direction: row; }
+  .justify-lg-between { justify-content: space-between; }
+}
